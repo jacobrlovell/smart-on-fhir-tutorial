@@ -30,10 +30,13 @@
           var maritalStatus = patient.maritalStatus.text;
           var fname = '';
           var lname = '';
+          var fullpatientname = '';          
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
+            fullpatientname = patient.name[0].text;
+            
           }
 
           var height = byCodes('8302-2');
@@ -47,6 +50,8 @@
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
+          p.lname = lname;
+          p.fullpatientname= fullpatientname;
           p.maritalstatus = maritalStatus;          
           p.height = getQuantityValueAndUnit(height[0]);
 
@@ -77,6 +82,7 @@
     return {
       fname: {value: ''},
       lname: {value: ''},
+      fullpatientname: {value: ''},      
       gender: {value: ''},
       birthdate: {value: ''},
       maritalstatus: {value: ''},      
@@ -121,6 +127,7 @@
     $('#loading').hide();
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
+    $('#fullpatientname').html(p.fullpatientname);    
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
     $('#maritalstatus').html(p.maritalstatus);
